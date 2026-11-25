@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WRAVEN LABS — Concept Watch Catalog</title>
+<style>
+:root{--acc:#ff4d00;--ink:#0a0a0a;--mut:#6b6b6b;--line:#e4e4e4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+header{padding:28px 20px 0;max-width:1280px;margin:0 auto}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+h1{font-size:clamp(56px,11vw,150px);font-weight:900;letter-spacing:-.03em;line-height:.9;text-transform:uppercase;margin:10px 0 6px}
+.sub{font-size:clamp(16px,2.4vw,24px);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.intro{max-width:720px;color:#333;font-size:16px;line-height:1.55;margin:16px 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:0;border-top:3px solid var(--ink);border-bottom:1px solid var(--line);margin:26px 0 0}
+.stat{flex:1 1 150px;padding:14px 16px;border-right:1px solid var(--line)}
+.stat b{display:block;font-size:34px;font-weight:900}
+.stat span{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+main{max-width:1280px;margin:0 auto;padding:0 20px 40px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;padding:22px 0 6px;position:sticky;top:0;background:#fff;z-index:5}
+.chip{border:2px solid var(--ink);background:#fff;padding:8px 14px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:999px}
+.chip.active{background:var(--ink);color:#fff}
+.chip:hover{border-color:var(--acc);color:var(--acc)}
+.chip.active:hover{color:#fff;background:var(--acc);border-color:var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px;padding-top:16px}
+.tile{border:1px solid var(--line);display:flex;flex-direction:column;background:#fff}
+.tile:hover{border-color:var(--ink)}
+.thumb{position:relative;background:#111;aspect-ratio:16/9;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .num{position:absolute;left:10px;top:8px;color:#fff;font-weight:900;font-size:20px;text-shadow:0 1px 6px rgba(0,0,0,.7);z-index:2}
+.body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tag{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+h3{font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1.05}
+.hook{font-size:15px;line-height:1.45;color:#222}
+dl{display:grid;grid-template-columns:86px 1fr;gap:6px 10px;margin-top:4px}
+dt{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding-top:2px}
+dd{font-size:13.5px;line-height:1.5;color:#333}
+.note{font-size:13px;line-height:1.5;background:#fff4ee;border-left:3px solid var(--acc);padding:8px 10px}
+.src{margin-top:auto;padding-top:10px;font-size:12.5px;color:var(--mut);border-top:1px solid var(--line)}
+.src a{font-weight:800;color:var(--acc);text-decoration:none;text-transform:uppercase;letter-spacing:.06em}
+section.index{max-width:1280px;margin:10px auto 0;padding:0 20px 50px}
+section.index h2{font-size:clamp(30px,5vw,54px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;border-top:3px solid var(--ink);padding-top:22px}
+section.index p.lede{color:#333;margin:10px 0 18px;max-width:720px;line-height:1.55}
+ol.srcs{list-style:none;border-top:1px solid var(--line)}
+ol.srcs li{display:flex;gap:14px;align-items:baseline;padding:10px 2px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+ol.srcs .n{font-weight:900;color:var(--acc);min-width:30px}
+ol.srcs a{font-weight:700;text-decoration:none}
+ol.srcs a:hover{color:var(--acc)}
+ol.srcs .st{margin-left:auto;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+footer{border-top:3px solid var(--ink);padding:22px 20px 40px;max-width:1280px;margin:0 auto;font-size:13px;color:#444;line-height:1.6}
+footer b{text-transform:uppercase;letter-spacing:.1em}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <p class="kicker">Wraven Labs · Concept Watch Studio</p>
+  <h1>Wraven</h1>
+  <p class="sub">The Concept Watch Catalog</p>
+  <p class="intro">Every watch idea from the <a href="https://www.youtube.com/@wravenlabs" target="_blank" rel="noopener">@wravenlabs</a> YouTube Shorts, collected as a designer's catalog. Each tile states the concept, how the time reads, how the watch looks, and the trick that makes it work. Multi-concept Shorts get one tile per concept. Teasers, process clips and two lost videos are marked as what they are, with nothing invented.</p>
+  <div class="stats">
+    <div class="stat"><b>89</b><span>Shorts scanned</span></div>
+    <div class="stat"><b>36</b><span>Design Shorts</span></div>
+    <div class="stat"><b>59</b><span>Concept tiles</span></div>
+    <div class="stat"><b>2</b><span>Lost videos</span></div>
+  </div>
+</header>
+<main>
+  <div class="filters"><button class="chip active" data-tag="All">All</button><button class="chip" data-tag="Time Tricks">Time Tricks</button><button class="chip" data-tag="Pop Culture">Pop Culture</button><button class="chip" data-tag="Complications">Complications</button><button class="chip" data-tag="In the Lab">In the Lab</button><button class="chip" data-tag="Themed">Themed</button><button class="chip" data-tag="Pairs">Pairs</button><button class="chip" data-tag="Imperfect">Imperfect</button><button class="chip" data-tag="Collabs">Collabs</button><button class="chip" data-tag="Lost Videos">Lost Videos</button></div>
+  <div class="grid">
+<article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">01</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/HNqQaPn4vH8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Miscut Time</h3>
+    <p class="hook">A dial printed off-register, like a miscut trading card, that still tells perfect time.</p>
+    <dl>
+      <dt>Reads</dt><dd>From the main left dial. A second, shorter hand set on the right completes the scale.</dd>
+      <dt>Dial &amp; case</dt><dd>Soft matte guilloche dial split into a large left field (12–6) and a right crescent (10, 9, 8). Silver baton hands, red second hand, black crocodile-pattern strap.</dd>
+      <dt>The trick</dt><dd>As a hand tucks under the thickened bezel on the left, a matching duplicate hand emerges on the right. Two hand sets, one portal handoff.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “The “Miscut Dial” Watch” · <a href="https://www.youtube.com/shorts/HNqQaPn4vH8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">02</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/0Eo77x4x3Nk/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Time Dilation</h3>
+    <p class="hook">A watch that stretches time, with hours squeezed at the top and spread at the bottom.</p>
+    <dl>
+      <dt>Reads</dt><dd>From warped numerals that compress near 12 and open out toward 6. The hands speed up and slow down to match.</dd>
+      <dt>Dial &amp; case</dt><dd>Black dial, stretched white numerals, time dilation wordmark.</dd>
+      <dt>The trick</dt><dd>Variable-ratio oval gearing runs the hands slow at the top of the dial and fast at the bottom.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “A watch that stretches time” · <a href="https://www.youtube.com/shorts/0Eo77x4x3Nk" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pop Culture">
+  <div class="thumb"><span class="num">03</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/jcIcUFRq5fA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pop Culture</p>
+    <h3>Ocarina of Time</h3>
+    <p class="hook">The Legend of Zelda, rebuilt as a green-and-gold watch with a working time jump.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normally, from the hands. Emerald, ruby and sapphire Spiritual Stones sit at 3, 6 and 9, with a gold Triforce at 12.</dd>
+      <dt>Dial &amp; case</dt><dd>Gold case, green leather strap, sunburst green dial fading to black at the edges. Hylian-crest rotor on the caseback.</dd>
+      <dt>The trick</dt><dd>A Master Sword side switch jumps the hands forward 12 hours to reveal hidden Sage medallions, then reverses to seal them. At 10:10 the hands form Navi.</dd>
+    </dl>
+    <p class="note">Teased in a separate wordless Short (6Xx3ZVb8zOc) with forest light and the Triforce.</p>
+    <p class="src">Source Short: “Ocarina of Time watch design” · <a href="https://www.youtube.com/shorts/jcIcUFRq5fA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">04</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/KzceGwKg9B4/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>The Equation Watch</h3>
+    <p class="hook">Possibly the hardest watch in the world to read. Every glance is a maths problem.</p>
+    <dl>
+      <dt>Reads</dt><dd>Solve the equation on the dial: (A × B × C + D) × E + F. Six digit windows can build any time from 1:00 to 12:59.</dd>
+      <dt>Dial &amp; case</dt><dd>Clean guilloche dial with cut-out digit windows, printed equation symbols, a flip AM/PM indicator and small seconds. Shown in purple, red and a translucent ghost version.</dd>
+      <dt>The trick</dt><dd>Two nested disk-and-ring assemblies rotate independently to change the digits.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Hardest to read watch in the world?” · <a href="https://www.youtube.com/shorts/KzceGwKg9B4" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">05</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oBIc7Jsa1Uw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Off-Grid: Spin the Bottle</h3>
+    <p class="hook">One of five joke complications for the Moser Off-Grid, a watch with an analog dial and a digital screen. Every idea uses both.</p>
+    <dl>
+      <dt>Reads</dt><dd>After a countdown, the hands swing to 12, spin like a bottle, and land on a random direction.</dd>
+      <dt>Dial &amp; case</dt><dd>Built for the Moser Off-Grid hybrid dial.</dd>
+      <dt>The trick</dt><dd>The analog hands do the spin. The digital display runs the countdown.</dd>
+    </dl>
+    <p class="note">From a paid-promotion Short for the Moser Off-Grid.</p>
+    <p class="src">Source Short: “5 dumb complications for the Off-Grid” · <a href="https://www.youtube.com/shorts/oBIc7Jsa1Uw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">06</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oBIc7Jsa1Uw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Off-Grid: Cuckoo Mode</h3>
+    <p class="hook">A cuckoo clock, shrunk onto a hybrid watch.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time on the dial. On the hour, the watch vibrates and a cuckoo animation plays on the screen.</dd>
+      <dt>Dial &amp; case</dt><dd>Built for the Moser Off-Grid hybrid dial.</dd>
+      <dt>The trick</dt><dd>The screen carries the bird. The vibration carries the strike.</dd>
+    </dl>
+    <p class="note">From a paid-promotion Short for the Moser Off-Grid.</p>
+    <p class="src">Source Short: “5 dumb complications for the Off-Grid” · <a href="https://www.youtube.com/shorts/oBIc7Jsa1Uw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">07</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oBIc7Jsa1Uw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Off-Grid: Pasta Timer</h3>
+    <p class="hook">A timer that grades your noodles while it counts.</p>
+    <dl>
+      <dt>Reads</dt><dd>The hands count like a chronograph. The screen gives a live readout from underdone to overdone.</dd>
+      <dt>Dial &amp; case</dt><dd>Built for the Moser Off-Grid hybrid dial.</dd>
+      <dt>The trick</dt><dd>Analog hands time the pot. The digital display judges the pasta.</dd>
+    </dl>
+    <p class="note">From a paid-promotion Short for the Moser Off-Grid.</p>
+    <p class="src">Source Short: “5 dumb complications for the Off-Grid” · <a href="https://www.youtube.com/shorts/oBIc7Jsa1Uw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">08</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oBIc7Jsa1Uw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Off-Grid: Tide Indicator</h3>
+    <p class="hook">The most useful idea in the Off-Grid set: tides, with a look into the future.</p>
+    <dl>
+      <dt>Reads</dt><dd>The screen shows the tide rising or falling. Press a button and the analog clock fast-forwards 12 hours while the tide updates to that future time.</dd>
+      <dt>Dial &amp; case</dt><dd>Built for the Moser Off-Grid hybrid dial.</dd>
+      <dt>The trick</dt><dd>The button drives the hands forward half a day and recalculates the tide for that moment.</dd>
+    </dl>
+    <p class="note">From a paid-promotion Short for the Moser Off-Grid.</p>
+    <p class="src">Source Short: “5 dumb complications for the Off-Grid” · <a href="https://www.youtube.com/shorts/oBIc7Jsa1Uw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">09</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oBIc7Jsa1Uw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Off-Grid: Party Mode</h3>
+    <p class="hook">A hidden mode that hides the time entirely. On purpose.</p>
+    <dl>
+      <dt>Reads</dt><dd>You cannot. That is the point.</dd>
+      <dt>Dial &amp; case</dt><dd>Built for the Moser Off-Grid hybrid dial.</dd>
+      <dt>The trick</dt><dd>A secret button combination flashes both LEDs, plays a party animation and spins the hands.</dd>
+    </dl>
+    <p class="note">From a paid-promotion Short for the Moser Off-Grid.</p>
+    <p class="src">Source Short: “5 dumb complications for the Off-Grid” · <a href="https://www.youtube.com/shorts/oBIc7Jsa1Uw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pop Culture">
+  <div class="thumb"><span class="num">10</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/YuaW0XWnXa8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pop Culture</p>
+    <h3>The Matrix Watch</h3>
+    <p class="hook">The front is the Matrix. The caseback is the machine world.</p>
+    <dl>
+      <dt>Reads</dt><dd>From hands at the dial edge. A blinking cursor at the lower dial marks the seconds.</dd>
+      <dt>Dial &amp; case</dt><dd>Black polished case, black strap with green stitching, layered fumé dial that runs clear in the centre and black at the edges, like an old CRT screen.</dd>
+      <dt>The trick</dt><dd>The cursor is a window over a rotating bright panel, so each blink is one second. A clear UV resin layer hides green code that only appears under UV light. The display caseback carries red Sentinel-style screws and a Sentinel rotor.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Matrix inspired watch design” · <a href="https://www.youtube.com/shorts/YuaW0XWnXa8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">11</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/iEQCcgKT09Q/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Decoder Watch</h3>
+    <p class="hook">A secret-message toy turned into a mechanical watch. The time is on the dial, but hidden.</p>
+    <dl>
+      <dt>Reads</dt><dd>Cyan hours on an inner ring and minutes around the edge, both buried under a red pixel-noise pattern.</dd>
+      <dt>Dial &amp; case</dt><dd>White dial with concentric camouflage circles and hidden day and date windows under the noise.</dd>
+      <dt>The trick</dt><dd>The hands are clear discs with small red segments. They reveal only the numerals they pass over. A third pusher-driven disc reveals the day and date. Red glasses reveal everything at once.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Decoder watch that reveals the time” · <a href="https://www.youtube.com/shorts/iEQCcgKT09Q" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">12</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/c4xtR2pqK8A/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Schrödinger&#x27;s Cat</h3>
+    <p class="hook">The thought experiment as a wristwatch. The cat is alive and dead until you look.</p>
+    <dl>
+      <dt>Reads</dt><dd>From minimal baton hands on a white dial. Odd hours use overlapping in-between numerals, and a cat window replaces 3 o&#x27;clock.</dd>
+      <dt>Dial &amp; case</dt><dd>Reserved white dial, clear markers, red second hand, black leather strap.</dd>
+      <dt>The trick</dt><dd>A wheel of alternating alive and dead cat icons spins freely under the window. Press the pusher to stop it and open the aperture. Release snaps it shut and re-spins the wheel.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Schrödinger&#x27;s Cat Watch Design” · <a href="https://www.youtube.com/shorts/c4xtR2pqK8A" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="In the Lab">
+  <div class="thumb"><span class="num">13</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/Z4WUlLPXn-Q/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">In the Lab</p>
+    <h3>Blue Lagoon, Recreated</h3>
+    <p class="hook">Not a new design: a study. The Moser Blue Lagoon fumé dial, rebuilt from scratch in Photoshop.</p>
+    <dl>
+      <dt>Reads</dt><dd>From Moser leaf hands on a bare dial with no indices and no logo.</dd>
+      <dt>Dial &amp; case</dt><dd>Teal centre fading to black at the edges, steel case, black leather strap.</dd>
+      <dt>The trick</dt><dd>The recreation stacks a smooth gradient, stipple noise, a sunburst texture, hand-drawn light arcs, cast hand shadows and a crystal sheen. It landed close to the official image.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Building a Moser Dial from scratch” · <a href="https://www.youtube.com/shorts/Z4WUlLPXn-Q" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Themed">
+  <div class="thumb"><span class="num">14</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/PnFvcF2qATA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Themed</p>
+    <h3>Jupiter</h3>
+    <p class="hook">The first of a planned planet series. Jupiter&#x27;s storms become a dial, and its fast spin becomes a new kind of hand.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normally, plus a special hand that tracks one Jovian day instead of an Earth day.</dd>
+      <dt>Dial &amp; case</dt><dd>Black carbon case and strap. Milky-white enamel dial with swirling cloud colours, developed from milk, food colouring and detergent tests. Earth and its Moon sit at 12, drawn to scale.</dd>
+      <dt>The trick</dt><dd>The extra hand completes a rotation in 9 hours, 55 minutes, 30 seconds, so it can track features like the Great Red Spot. The caseback shows the solar system with Jupiter highlighted.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Designing a Jupiter themed watch” · <a href="https://www.youtube.com/shorts/PnFvcF2qATA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">15</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/bbW0S0o2WLY/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Fireworks</h3>
+    <p class="hook">The seconds display becomes a tiny fireworks show, bursting once every 15 seconds.</p>
+    <dl>
+      <dt>Reads</dt><dd>Watch a shape fill four channels outward from the centre. Second marks run along each channel.</dd>
+      <dt>Dial &amp; case</dt><dd>Aventurine night-sky dial with a firework-colour gradient and a star cut-out at the end of each channel.</dd>
+      <dt>The trick</dt><dd>An exponential-curve shape under a cross-shaped cut-out sweeps around and fills one channel at a time. A lume version glows at night.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Fireworks watch design!” · <a href="https://www.youtube.com/shorts/bbW0S0o2WLY" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pop Culture">
+  <div class="thumb"><span class="num">16</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/vcZX4u09Rkk/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pop Culture</p>
+    <h3>Avatar: Airbender</h3>
+    <p class="hook">An Air Nomad watch that stays calm in daylight and reveals the Avatar State in the dark.</p>
+    <dl>
+      <dt>Reads</dt><dd>From numerals and ticks in the show&#x27;s title font. The four element emblems replace 12, 3, 6 and 9, in cycle order from Air at 12.</dd>
+      <dt>Dial &amp; case</dt><dd>Ovoid gold egg case, saffron cloth strap, pale blue dial with a repeating Air symbol texture and enamel element emblems. The second hand is a glider staff.</dd>
+      <dt>The trick</dt><dd>Hidden lume: in the dark a large arrow appears on the dial, the arrow hands glow, and each emblem glows in its nation&#x27;s colour. The caseback rotor is shaped like a glider.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “My Avatar The Last Airbender watch design” · <a href="https://www.youtube.com/shorts/vcZX4u09Rkk" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">17</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/bwUKBD1a0EM/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Vanishing Second Hand</h3>
+    <p class="hook">A stage-magic vanish, performed by a second hand every minute.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normally. Near 12 the second hand disappears, then reappears on the other side of a wedge cut-out, still keeping perfect time.</dd>
+      <dt>Dial &amp; case</dt><dd>Purple gradient dial, black strap, a wedge at 12 that opens onto the movement, and a crystal with a matching black wedge and faded edges.</dd>
+      <dt>The trick</dt><dd>Two second hands and a retrograde reset. The first hand stops at the wedge while the second takes over. The reset fires about 30 seconds later, when nobody is watching.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Vanishing Second Hand watch design” · <a href="https://www.youtube.com/shorts/bwUKBD1a0EM" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pop Culture">
+  <div class="thumb"><span class="num">18</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/N6aShOjmPI8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pop Culture</p>
+    <h3>Bulbasaur</h3>
+    <p class="hook">A watch that evolves while you wear it, changed by sunlight itself.</p>
+    <dl>
+      <dt>Reads</dt><dd>From bold numerals and bulb markers. Leaf-shaped hands, and a second hand with a bulb counterweight.</dd>
+      <dt>Dial &amp; case</dt><dd>Field watch on a green NATO strap with a dark Vine Whip centre stripe. Black dial with a green core and blue haze at the edges.</dd>
+      <dt>The trick</dt><dd>A layered enamel dial degrades under UV over about a year, revealing Ivysaur, then Venusaur, then locking on a UV-resistant base layer. The strap changes with each stage. One watch in twenty is a hidden Mega Venusaur.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Bulbasaur watch design!” · <a href="https://www.youtube.com/shorts/N6aShOjmPI8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pop Culture">
+  <div class="thumb"><span class="num">19</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/OeNkeAHXsMY/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pop Culture</p>
+    <h3>Squirtle Diver</h3>
+    <p class="hook">A cheerful diver whose strap only shows its full pattern in the water.</p>
+    <dl>
+      <dt>Reads</dt><dd>From yellow indices on a teal dial.</dd>
+      <dt>Dial &amp; case</dt><dd>Teal rubber strap, brown ceramic bezel for the shell, wave-texture dial, turtle-shell caseback etching, and a Poké Ball crown.</dd>
+      <dt>The trick</dt><dd>Hydrochromic ink on the strap reveals a wave pattern only when wet. Wartortle turns darker in titanium. Blastoise goes full pro diver, with crown and helium valve placed like water cannons.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Squirtle watch design!” · <a href="https://www.youtube.com/shorts/OeNkeAHXsMY" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pop Culture">
+  <div class="thumb"><span class="num">20</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/BRCK9fLmbr8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pop Culture</p>
+    <h3>Charmander GMT</h3>
+    <p class="hook">A warm GMT that wears Charmander&#x27;s colours without turning into a cartoon.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normally, with a second time zone on the GMT hand.</dd>
+      <dt>Dial &amp; case</dt><dd>Tudor-style case, two-tone orange and cream GMT bezel, soft beige dial, Gill Sans numerals, and Pokédex number 0004 on the dial.</dd>
+      <dt>The trick</dt><dd>The GMT hand is Charmander&#x27;s tail. The power reserve is styled as an HP bar. Charmeleon runs redder; Charizard adds a holographic sunburst dial and wing-shaped hands.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Charmander watch?” · <a href="https://www.youtube.com/shorts/BRCK9fLmbr8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">21</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/TfsjtkBcaH8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Math Hour</h3>
+    <p class="hook">One of three designs built on a hand sliced down the middle. The hour becomes arithmetic.</p>
+    <dl>
+      <dt>Reads</dt><dd>From 3 o&#x27;clock onward the hour hand splits. The hour is the sum of the two numbers the two halves point to.</dd>
+      <dt>Dial &amp; case</dt><dd>Shown as a green split hour hand, with a subtraction variant in red and silver halves.</dd>
+      <dt>The trick</dt><dd>Each half of the hand moves independently, so one hand carries two values at once.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Split hand watch designs ✌️” · <a href="https://www.youtube.com/shorts/TfsjtkBcaH8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">22</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/TfsjtkBcaH8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>AM/PM Hand</h3>
+    <p class="hook">The hand itself becomes the complication.</p>
+    <dl>
+      <dt>Reads</dt><dd>A thick split hand runs parallel through the AM and crisscrosses through the PM, flipping after noon.</dd>
+      <dt>Dial &amp; case</dt><dd>Shown on a white dial with large 3, 6 and 9 numerals, on a steel bracelet.</dd>
+      <dt>The trick</dt><dd>Two half-hands change their relationship at noon, so the hand&#x27;s shape tells you which half of the day you are in.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Split hand watch designs ✌️” · <a href="https://www.youtube.com/shorts/TfsjtkBcaH8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">23</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/TfsjtkBcaH8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Scissors</h3>
+    <p class="hook">A split minute hand that works as a built-in timer.</p>
+    <dl>
+      <dt>Reads</dt><dd>Press the top pusher and one half of the minute hand parks while the other keeps moving. The opening angle shows the elapsed time.</dd>
+      <dt>Dial &amp; case</dt><dd>A minute hand shaped like a pair of scissors.</dd>
+      <dt>The trick</dt><dd>A second press snaps the halves shut and back into sync. Built for timing things like cooking.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Split hand watch designs ✌️” · <a href="https://www.youtube.com/shorts/TfsjtkBcaH8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pairs">
+  <div class="thumb"><span class="num">24</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/GvGN6aMnQYA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pairs</p>
+    <h3>Time Splitter</h3>
+    <p class="hook">One of four double-wrister designs: a watch on each wrist, splitting the time between them.</p>
+    <dl>
+      <dt>Reads</dt><dd>Hours on the left watch, minutes on the right. Even the date splits, first digit left and second digit right.</dd>
+      <dt>Dial &amp; case</dt><dd>Two gold-cased watches, black dial on the left and red on the right, on black and red leather straps.</dd>
+      <dt>The trick</dt><dd>The caseback of the hour watch carries a retrograde minute hand and the second date digit, so the left watch alone can still show the full time when flipped over.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Double wrister watch designs” · <a href="https://www.youtube.com/shorts/GvGN6aMnQYA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pairs">
+  <div class="thumb"><span class="num">25</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/GvGN6aMnQYA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pairs</p>
+    <h3>Figure Eight</h3>
+    <p class="hook">Two ordinary watches turn their seconds hands into a relay race.</p>
+    <dl>
+      <dt>Reads</dt><dd>Conventionally on both watches. The show is in the seconds.</dd>
+      <dt>Dial &amp; case</dt><dd>A matched pair, shown stacked one above the other.</dd>
+      <dt>The trick</dt><dd>The top watch&#x27;s seconds hand sweeps a full circle, then the bottom watch&#x27;s hand takes over counter-clockwise. The handover repeats every minute, tracing a figure eight.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Double wrister watch designs” · <a href="https://www.youtube.com/shorts/GvGN6aMnQYA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pairs">
+  <div class="thumb"><span class="num">26</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/GvGN6aMnQYA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pairs</p>
+    <h3>Day Shift / Night Shift</h3>
+    <p class="hook">Two watches job-share a single day.</p>
+    <dl>
+      <dt>Reads</dt><dd>The day watch runs 6 AM to 6 PM in 24-hour numerals, then pauses. The night watch takes over from 6 PM to 6 AM.</dd>
+      <dt>Dial &amp; case</dt><dd>A matched pair, presented as two shifts.</dd>
+      <dt>The trick</dt><dd>Each watch runs only its own 12-hour half of the day and rests for the other half.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Double wrister watch designs” · <a href="https://www.youtube.com/shorts/GvGN6aMnQYA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Pairs">
+  <div class="thumb"><span class="num">27</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/GvGN6aMnQYA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Pairs</p>
+    <h3>PB&amp;J</h3>
+    <p class="hook">A peanut-butter watch and a jelly watch that only tell the time together.</p>
+    <dl>
+      <dt>Reads</dt><dd>Only on the sides of the cases, when the two watches are pressed together like a sandwich.</dd>
+      <dt>Dial &amp; case</dt><dd>Peanut butter: solid gold case, hand-painted dial. Jelly: rose-gold case, polished ruby dial.</dd>
+      <dt>The trick</dt><dd>The case edges combine into the readout when the pair is sandwiched. Apart, neither watch says anything.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Double wrister watch designs” · <a href="https://www.youtube.com/shorts/GvGN6aMnQYA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="In the Lab">
+  <div class="thumb"><span class="num">28</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/T4vduIEMtEY/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">In the Lab</p>
+    <h3>Extreme Photoshop</h3>
+    <p class="hook">Not a watch design: a lab moment. A watch photo pushed through mirrored, kaleidoscopic edits.</p>
+    <dl>
+      <dt>Reads</dt><dd>Not applicable. The watch in the photo is an existing design being distorted.</dd>
+      <dt>Dial &amp; case</dt><dd>Studio footage from the Wraven Labs desk, cut to music.</dd>
+      <dt>The trick</dt><dd>Extreme mirroring in Photoshop turns one product shot into a symmetrical composition.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Photoshop. But make it extreme 🤘” · <a href="https://www.youtube.com/shorts/T4vduIEMtEY" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Imperfect">
+  <div class="thumb"><span class="num">29</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/xa_srFUIrxE/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Imperfect</p>
+    <h3>Hair GMT</h3>
+    <p class="hook">One of four Imperfect designs: flaws, engineered. A GMT hand disguised as a hair under the crystal.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal hour and minute hands, plus a slow 24-hour GMT hand.</dd>
+      <dt>Dial &amp; case</dt><dd>Clean dial, soft markers, bright hands. One curved line sits off-centre and reads as a stray hair at a glance.</dd>
+      <dt>The trick</dt><dd>The GMT hand is curved and mounted off-centre, and it moves so slowly that it looks like trapped dirt instead of a hand.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Imperfect Watch Designs” · <a href="https://www.youtube.com/shorts/xa_srFUIrxE" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Imperfect">
+  <div class="thumb"><span class="num">30</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/xa_srFUIrxE/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Imperfect</p>
+    <h3>Air Bubble Watch</h3>
+    <p class="hook">The air bubble under a screen protector, promoted to a design feature.</p>
+    <dl>
+      <dt>Reads</dt><dd>From normal hands. Raised bubble clusters form the hour markers, larger at 12, 3, 6 and 9.</dd>
+      <dt>Dial &amp; case</dt><dd>Dark dial with glossy three-dimensional bubble clusters.</dd>
+      <dt>The trick</dt><dd>Not a botched protector. The bubbles are a sculpted dial that imitates trapped air on purpose.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Imperfect Watch Designs” · <a href="https://www.youtube.com/shorts/xa_srFUIrxE" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Imperfect">
+  <div class="thumb"><span class="num">31</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/xa_srFUIrxE/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Imperfect</p>
+    <h3>Glitch Seconds</h3>
+    <p class="hook">A seconds hand stuck in a one-second loop.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal hour and minute hands. Seconds run on a small retrograde arc.</dd>
+      <dt>Dial &amp; case</dt><dd>A normal dial with one small, broken-looking seconds display.</dd>
+      <dt>The trick</dt><dd>The retrograde hand advances a single second, snaps back, and starts over, forever, while the watch keeps correct time.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Imperfect Watch Designs” · <a href="https://www.youtube.com/shorts/xa_srFUIrxE" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Imperfect">
+  <div class="thumb"><span class="num">32</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/xa_srFUIrxE/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Imperfect</p>
+    <h3>Slump Hour</h3>
+    <p class="hook">A jump hour whose numerals give up and fall over.</p>
+    <dl>
+      <dt>Reads</dt><dd>From the minute hand, with the hour shown by a numeral that slumps as its hour ends.</dd>
+      <dt>Dial &amp; case</dt><dd>Jump-hour layout with crooked, sagging numerals.</dd>
+      <dt>The trick</dt><dd>Each numeral tilts over when the minute hand completes its revolution, leaves a small mark where it stood, and the next hour slumps in turn.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Imperfect Watch Designs” · <a href="https://www.youtube.com/shorts/xa_srFUIrxE" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Collabs">
+  <div class="thumb"><span class="num">33</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/2pv8a4os7qI/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Collabs</p>
+    <h3>C1 Full Moon</h3>
+    <p class="hook">The Christopher Ward collaboration: a moonphase countdown to the werewolf. The design was an April Fools joke. The collaboration was real.</p>
+    <dl>
+      <dt>Reads</dt><dd>From normal hands on a starry dial. The complication counts down to the full moon: 2 days before, 1 day before, the day of.</dd>
+      <dt>Dial &amp; case</dt><dd>Dark navy starry dial, a large moon, a werewolf silhouette on a hill, silver case, dark blue leather strap.</dd>
+      <dt>The trick</dt><dd>A Moon Silhouette indicator tracks the approach of the full moon instead of its phase.</dd>
+    </dl>
+    <p class="note">Also shown in a silent teaser Short, “Christopher Ward April Fools collab :)” (qTZYUXV-0OM).</p>
+    <p class="src">Source Short: “April fools werewolf design recap” · <a href="https://www.youtube.com/shorts/2pv8a4os7qI" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Collabs">
+  <div class="thumb"><span class="num">34</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/xvtC7ACXJo8/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Collabs</p>
+    <h3>The Collaboration, Unrevealed</h3>
+    <p class="hook">The announcement of Christopher Ward × Wraven Labs. The watch itself stays hidden.</p>
+    <dl>
+      <dt>Reads</dt><dd>Not yet. The design was withheld for a same-day full-moon reveal.</dd>
+      <dt>Dial &amp; case</dt><dd>No finished design is shown in this Short.</dd>
+      <dt>The trick</dt><dd>The brief: an alternate C1 Moonphase that celebrates the moon and adds a multi-step complication without taking away the original&#x27;s soul. The collaboration started with the cow-over-the-moon jump hour built on a C1 Moonphase.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Christopher Ward x Wraven Labs” · <a href="https://www.youtube.com/shorts/xvtC7ACXJo8" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">35</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/680OLrDiEXw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>10:10 — Locked Hands</h3>
+    <p class="hook">One of three designs that chase the perfect advertising pose. This one never leaves it.</p>
+    <dl>
+      <dt>Reads</dt><dd>The hands are fixed at 10:10. Read the hour in a jump-hour window and the minutes on a rotating disc under the minute hand.</dd>
+      <dt>Dial &amp; case</dt><dd>Dark green dial, gold case, near-invisible numerals, in a stealth register.</dd>
+      <dt>The trick</dt><dd>The hands never move and could be solid metal. The window and disc carry the time.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “The “10:10 only” watch” · <a href="https://www.youtube.com/shorts/680OLrDiEXw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">36</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/680OLrDiEXw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>10:10 — Snap Back</h3>
+    <p class="hook">A watch that holds its pose until you ask for the time.</p>
+    <dl>
+      <dt>Reads</dt><dd>Press the button and the hands snap from 10:10 to the real time. Release, and they snap back.</dd>
+      <dt>Dial &amp; case</dt><dd>Conceived around a retrograde specialist&#x27;s movement craft.</dd>
+      <dt>The trick</dt><dd>The watch keeps time in the background. The button toggles between display pose and real time, and the same mode sets the watch.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “The “10:10 only” watch” · <a href="https://www.youtube.com/shorts/680OLrDiEXw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">37</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/680OLrDiEXw/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>10:10 — Snow Angel</h3>
+    <p class="hook">The loosest of the three 10:10 designs, and the most classical.</p>
+    <dl>
+      <dt>Reads</dt><dd>From two retrograde hands on small arcs placed in the 10:10 regions of the dial.</dd>
+      <dt>Dial &amp; case</dt><dd>Classic styling, built on short retrograde arcs.</dd>
+      <dt>The trick</dt><dd>Each hand travels its preset arc and snaps back, so both hands hover near the 10:10 position all day without ever freezing.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “The “10:10 only” watch” · <a href="https://www.youtube.com/shorts/680OLrDiEXw" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">38</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/DLESXqfaMqY/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Tourbillon Toppers</h3>
+    <p class="hook">Billed by its creator as possibly his greatest invention: covers that hide a tourbillon.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normally. Some toppers double as a small-seconds display.</dd>
+      <dt>Dial &amp; case</dt><dd>A decorative cover sits over the tourbillon aperture. Designs include a sewer cover, a bottle cap, a tumbleweed, loading spinners, a baby chick, a pizza seen from above, and the colour red.</dd>
+      <dt>The trick</dt><dd>The premise runs backwards on purpose: stick a less impressive fake complication over the most impressive real one. Toppers swap, but a watchmaker has to do the swap.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Possibly my greatest watch invention yet.” · <a href="https://www.youtube.com/shorts/DLESXqfaMqY" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">39</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/lngJExXY9Tk/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Perpetual Traffic</h3>
+    <p class="hook">A traffic jam as a seconds display. The cars creep forward. The gap travels backwards.</p>
+    <dl>
+      <dt>Reads</dt><dd>Hours and minutes from hands in the dial. Seconds from the cars and the gap moving around a three-lane highway ring at the edge.</dd>
+      <dt>Dial &amp; case</dt><dd>Road-sign indices, abstract cars on a perimeter track, shown in green and red versions with matching straps and a silver case.</dd>
+      <dt>The trick</dt><dd>A hidden hand under the dial carries a magnet. Magnetised cars on one-way rails get repelled forward into the gap ahead, so the gap moves backwards through the jam, forever. A magnetic barrier would be needed near a mechanical movement.</dd>
+    </dl>
+    <p class="note">A separate Short (jFdJ4oJaaPE) shows this watch in traffic-light colourways.</p>
+    <p class="src">Source Short: “Perpetual Traffic watch concept” · <a href="https://www.youtube.com/shorts/lngJExXY9Tk" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">40</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oqJo-oMtsjY/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Disappearing Dial: See-Through</h3>
+    <p class="hook">One of two dials built on a card-magic trick. A solid black dial that turns into a skeleton.</p>
+    <dl>
+      <dt>Reads</dt><dd>From normal hands on a classic black dial, before or after the slide.</dd>
+      <dt>Dial &amp; case</dt><dd>Plain black at rest. Slide the hidden disc and the dial turns partly transparent.</dd>
+      <dt>The trick</dt><dd>Two transparent discs carry inverse checkerboard prints. Aligned, they read as opaque black. Offset, the pattern lines up and the dial becomes see-through.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Disappearing watch dial ideas 🪄” · <a href="https://www.youtube.com/shorts/oqJo-oMtsjY" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">41</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/oqJo-oMtsjY/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Disappearing Dial: Hidden Image</h3>
+    <p class="hook">A plain black face with a secret picture inside it.</p>
+    <dl>
+      <dt>Reads</dt><dd>From normal hands. Hold the button and a hidden mosaic image blooms out of the black. Release and it snaps back.</dd>
+      <dt>Dial &amp; case</dt><dd>Classic black dial at rest, pixel-style hidden artwork underneath.</dd>
+      <dt>The trick</dt><dd>The same checkerboard disc system as the see-through dial, tuned to reveal an image instead of the movement. Any artwork could hide behind it.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Disappearing watch dial ideas 🪄” · <a href="https://www.youtube.com/shorts/oqJo-oMtsjY" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Time Tricks">
+  <div class="thumb"><span class="num">42</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/EUG9sH6pmx0/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Time Tricks</p>
+    <h3>Full-Screen Jump Hour</h3>
+    <p class="hook">The whole dial becomes the hour. One minute hand walks around a giant numeral.</p>
+    <dl>
+      <dt>Reads</dt><dd>At a glance: the dial is the hour. A single minute hand gives the minutes.</dd>
+      <dt>Dial &amp; case</dt><dd>Gradient dial, two pushers, and a stack of discs with wedge cut-outs under the surface.</dd>
+      <dt>The trick</dt><dd>Stacked discs align their gaps to reveal a different full-screen hour visual each hour. A 13th position blacks the dial out; one pusher toggles blackout, the other peeks the hour while held. A follow-up Short (MGFw1oP9p5c) proved the stack with five physical paper discs: it works, with tight tolerances.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Is this the ultimate jump hour?” · <a href="https://www.youtube.com/shorts/EUG9sH6pmx0" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Lost Videos">
+  <div class="thumb"><span class="num">43</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/B9Pq8Rl0E6U/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Lost Videos</p>
+    <h3>Cow Watch</h3>
+    <p class="hook">Title preserved from the channel index. This Short is no longer available on YouTube, so no details are stated here.</p>
+    <dl>
+      <dt>Reads</dt><dd>Unverified. The video could not be watched.</dd>
+      <dt>Dial &amp; case</dt><dd>Unverified.</dd>
+      <dt>The trick</dt><dd>A separate Short says the Christopher Ward collaboration began with a cow-over-the-moon jump hour built on a C1 Moonphase. Whether that design is this video is unconfirmed.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “Photoshopping a cow watch!” · <a href="https://www.youtube.com/shorts/B9Pq8Rl0E6U" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Lost Videos">
+  <div class="thumb"><span class="num">44</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/51VwJ6f3pM4/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Lost Videos</p>
+    <h3>4 Jump Hour Watches</h3>
+    <p class="hook">Title preserved from the channel index. This Short is no longer available on YouTube, so no details are stated here.</p>
+    <dl>
+      <dt>Reads</dt><dd>Unverified. The video could not be watched.</dd>
+      <dt>Dial &amp; case</dt><dd>Unverified.</dd>
+      <dt>The trick</dt><dd>None stated. Four jump-hour concepts are promised by the title and could not be checked.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “4 jump hour watches I wish existed” · <a href="https://www.youtube.com/shorts/51VwJ6f3pM4" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">45</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/Dn0aWKaOESI/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Power Reserve: Video Game Hearts</h3>
+    <p class="hook">One of five power-reserve designs that refuse to be a fuel gauge. This one is a health bar.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. Reserve from a row of hearts that drain as the watch runs down.</dd>
+      <dt>Dial &amp; case</dt><dd>Hearts on the dial, suggested in glow-in-the-dark lume.</dd>
+      <dt>The trick</dt><dd>Lose hearts as the energy fades. Let it hit zero and the watch dies, so winding becomes keeping your character alive.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Fun Power Reserve Indicator Designs” · <a href="https://www.youtube.com/shorts/Dn0aWKaOESI" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">46</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/Dn0aWKaOESI/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Power Reserve: Coffee Indicator</h3>
+    <p class="hook">A reserve gauge for coffee people.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. Reserve from a coffee-cup window that slowly empties.</dd>
+      <dt>Dial &amp; case</dt><dd>A brew-themed watch with a cup-shaped indicator.</dd>
+      <dt>The trick</dt><dd>Winding refills the cup. The gauge doubles as a reminder to drink coffee.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Fun Power Reserve Indicator Designs” · <a href="https://www.youtube.com/shorts/Dn0aWKaOESI" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">47</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/Dn0aWKaOESI/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Power Reserve: Sisyphus</h3>
+    <p class="hook">The perfect image of a reserve that always runs out.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. A small figure and rock on a slope at the dial&#x27;s edge show the reserve.</dd>
+      <dt>Dial &amp; case</dt><dd>A mountainside runs along the edge of the dial.</dd>
+      <dt>The trick</dt><dd>Winding carries the rock up the slope. As power drains, the rock rolls back down, forever.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Fun Power Reserve Indicator Designs” · <a href="https://www.youtube.com/shorts/Dn0aWKaOESI" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">48</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/Dn0aWKaOESI/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Power Reserve: Leave-Behind Hand</h3>
+    <p class="hook">A warning hand that stays invisible until it matters.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. At 12 hours of reserve left, a red hour hand is left behind at that spot on the dial.</dd>
+      <dt>Dial &amp; case</dt><dd>Stealth: nothing shows until the warning triggers.</dd>
+      <dt>The trick</dt><dd>Two stacked hour hands travel together. One stays parked as the deadline marker, then gets picked back up as winding brings the red hand around to it.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Fun Power Reserve Indicator Designs” · <a href="https://www.youtube.com/shorts/Dn0aWKaOESI" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">49</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/Dn0aWKaOESI/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Power Reserve: Wilting Flower</h3>
+    <p class="hook">A flower that blooms when you wind and wilts as the watch fades.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. The flower&#x27;s stage shows the reserve.</dd>
+      <dt>Dial &amp; case</dt><dd>Hinged metal petals on the dial, moving through distinct bloom and wilt stages.</dd>
+      <dt>The trick</dt><dd>Winding resets the flower to the start of its bloom. The mechanism borrows from time-lapse flowers and string-loosening thumb puppets.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Fun Power Reserve Indicator Designs” · <a href="https://www.youtube.com/shorts/Dn0aWKaOESI" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">50</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/v8hQMY40zw0/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Water Counter</h3>
+    <p class="hook">One of five wished-for complications. A tally counter for hydration.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. The counter clicks up once for every glass of water you drink.</dd>
+      <dt>Dial &amp; case</dt><dd>A simple click counter on the dial.</dd>
+      <dt>The trick</dt><dd>Manual and honest: the watch tracks intake only if you click it.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 watch complications that I wish existed pt.2” · <a href="https://www.youtube.com/shorts/v8hQMY40zw0" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">51</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/v8hQMY40zw0/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Drink Counter</h3>
+    <p class="hook">The water counter&#x27;s night-out partner.</p>
+    <dl>
+      <dt>Reads</dt><dd>A bar on the dial sits between a neutral zone and a red zone.</dd>
+      <dt>Dial &amp; case</dt><dd>A single balance bar, paired with the water counter.</dd>
+      <dt>The trick</dt><dd>Reset both counters before a night out. Each drink pushes the bar toward red. Each glass of water pulls it back toward neutral.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 watch complications that I wish existed pt.2” · <a href="https://www.youtube.com/shorts/v8hQMY40zw0" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">52</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/v8hQMY40zw0/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>One-Year Watch</h3>
+    <p class="hook">A watch that tells the year instead of the time.</p>
+    <dl>
+      <dt>Reads</dt><dd>From a single hand that makes one full rotation per year.</dd>
+      <dt>Dial &amp; case</dt><dd>The dial splits into four seasonal quadrants with four different textures blended into one face, conceived for a nature-textured dial maker.</dd>
+      <dt>The trick</dt><dd>Ultra-slow gearing turns the hand into a season indicator. A three-hand variant puts the year on the hour hand.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 watch complications that I wish existed pt.2” · <a href="https://www.youtube.com/shorts/v8hQMY40zw0" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">53</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/v8hQMY40zw0/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Moiré Dial</h3>
+    <p class="hook">A complication that does nothing useful at all, beautifully.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. The effect is decoration only.</dd>
+      <dt>Dial &amp; case</dt><dd>Radial moiré patterns across the dial.</dd>
+      <dt>The trick</dt><dd>A patterned base plate sits under a floating seconds disc with a second pattern. As the disc spins, the overlap creates shifting interference waves.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 watch complications that I wish existed pt.2” · <a href="https://www.youtube.com/shorts/v8hQMY40zw0" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">54</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/v8hQMY40zw0/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Internet Speed Chronograph</h3>
+    <p class="hook">A tachymeter for Wi-Fi.</p>
+    <dl>
+      <dt>Reads</dt><dd>Start the chronograph when a one-gigabit test page starts loading. Stop it when the page turns green, and read the speed on the bezel.</dd>
+      <dt>Dial &amp; case</dt><dd>A classic chronograph with a bezel calibrated in megabits per second, up to 1000.</dd>
+      <dt>The trick</dt><dd>The bezel does the maths that a road-speed tachymeter does for cars, swapped to data.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 watch complications that I wish existed pt.2” · <a href="https://www.youtube.com/shorts/v8hQMY40zw0" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">55</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/fxed3BAInXA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Christmas Indicator</h3>
+    <p class="hook">One of five proudly dumb complications. It works one day a year.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. On 25 December, an aperture announces that it is Christmas.</dd>
+      <dt>Dial &amp; case</dt><dd>Dark blue textured dial with a Christmas aperture.</dd>
+      <dt>The trick</dt><dd>The indicator sleeps for 364 days and wakes for one. Nothing else is asked of it.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Dumb Watch Complications I wish existed..” · <a href="https://www.youtube.com/shorts/fxed3BAInXA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">56</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/fxed3BAInXA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Bookmark</h3>
+    <p class="hook">A watch that remembers where you stopped reading.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. A three-number counter holds the page number.</dd>
+      <dt>Dial &amp; case</dt><dd>A small counter on the dial.</dd>
+      <dt>The trick</dt><dd>Set the counter when you close the book. The watch keeps your place.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Dumb Watch Complications I wish existed..” · <a href="https://www.youtube.com/shorts/fxed3BAInXA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">57</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/fxed3BAInXA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Odometer</h3>
+    <p class="hook">A car&#x27;s odometer, for a watch.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. A mileage-style counter totals every hour the watch has ever run.</dd>
+      <dt>Dial &amp; case</dt><dd>A running-total counter on the dial.</dd>
+      <dt>The trick</dt><dd>It cannot be reset, so a second-hand buyer can see how much the watch has actually run.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Dumb Watch Complications I wish existed..” · <a href="https://www.youtube.com/shorts/fxed3BAInXA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">58</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/fxed3BAInXA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Weekend Hands</h3>
+    <p class="hook">At 5 PM on Friday, the sensible hands clock off.</p>
+    <dl>
+      <dt>Reads</dt><dd>Plain hands run the week. From Friday 5 PM to Monday 5 AM, fun hands hidden underneath take over.</dd>
+      <dt>Dial &amp; case</dt><dd>Boring hands on top, playful hands below, on both hour and minute.</dd>
+      <dt>The trick</dt><dd>Built on the split-seconds idea: two stacked hands that can split apart and catch back up. On Monday morning the pairs resync into week mode.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Dumb Watch Complications I wish existed..” · <a href="https://www.youtube.com/shorts/fxed3BAInXA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article><article class="tile" data-tag="Complications">
+  <div class="thumb"><span class="num">59</span><img loading="lazy" alt="" src="https://i.ytimg.com/vi/fxed3BAInXA/hqdefault.jpg" onerror="this.remove()"></div>
+  <div class="body">
+    <p class="tag">Complications</p>
+    <h3>Quantum Entanglement</h3>
+    <p class="hook">A matched pair of watches linked by a single atom. Admittedly not a real complication.</p>
+    <dl>
+      <dt>Reads</dt><dd>Normal time from the hands. The complication is invisible.</dd>
+      <dt>Dial &amp; case</dt><dd>A his-and-hers pair, outwardly ordinary.</dd>
+      <dt>The trick</dt><dd>Each watch holds one of a pair of entangled particles, so measuring one instantly affects the other at any distance. A romantic thought experiment, and the creator knows it.</dd>
+    </dl>
+    
+    <p class="src">Source Short: “5 Dumb Watch Complications I wish existed..” · <a href="https://www.youtube.com/shorts/fxed3BAInXA" target="_blank" rel="noopener">Watch ↗</a></p>
+  </div>
+</article>
+  </div>
+</main>
+<section class="index">
+  <h2>Source Index</h2>
+  <p class="lede">All 36 watch-design Shorts on the channel, newest first, checked Nov 25, 2026. The channel holds 89 Shorts in total; the other 53 are skits, reviews, explainers, polls and product clips with no watch concept.</p>
+  <ol class="srcs">
+<li><span class="n">01</span><a href="https://www.youtube.com/shorts/HNqQaPn4vH8" target="_blank" rel="noopener">The “Miscut Dial” Watch</a><span class="st">1 tile</span></li><li><span class="n">02</span><a href="https://www.youtube.com/shorts/0Eo77x4x3Nk" target="_blank" rel="noopener">A watch that stretches time</a><span class="st">1 tile</span></li><li><span class="n">03</span><a href="https://www.youtube.com/shorts/jcIcUFRq5fA" target="_blank" rel="noopener">Ocarina of Time watch design</a><span class="st">1 tile</span></li><li><span class="n">04</span><a href="https://www.youtube.com/shorts/6Xx3ZVb8zOc" target="_blank" rel="noopener">New watch design this week 🗡️</a><span class="st">Teaser for Ocarina of Time</span></li><li><span class="n">05</span><a href="https://www.youtube.com/shorts/KzceGwKg9B4" target="_blank" rel="noopener">Hardest to read watch in the world?</a><span class="st">1 tile</span></li><li><span class="n">06</span><a href="https://www.youtube.com/shorts/oBIc7Jsa1Uw" target="_blank" rel="noopener">5 dumb complications for the Off-Grid</a><span class="st">5 tiles</span></li><li><span class="n">07</span><a href="https://www.youtube.com/shorts/YuaW0XWnXa8" target="_blank" rel="noopener">Matrix inspired watch design</a><span class="st">1 tile</span></li><li><span class="n">08</span><a href="https://www.youtube.com/shorts/iEQCcgKT09Q" target="_blank" rel="noopener">Decoder watch that reveals the time</a><span class="st">1 tile</span></li><li><span class="n">09</span><a href="https://www.youtube.com/shorts/c4xtR2pqK8A" target="_blank" rel="noopener">Schrödinger&#x27;s Cat Watch Design</a><span class="st">1 tile</span></li><li><span class="n">10</span><a href="https://www.youtube.com/shorts/Z4WUlLPXn-Q" target="_blank" rel="noopener">Building a Moser Dial from scratch</a><span class="st">Lab study</span></li><li><span class="n">11</span><a href="https://www.youtube.com/shorts/PnFvcF2qATA" target="_blank" rel="noopener">Designing a Jupiter themed watch</a><span class="st">1 tile</span></li><li><span class="n">12</span><a href="https://www.youtube.com/shorts/bbW0S0o2WLY" target="_blank" rel="noopener">Fireworks watch design!</a><span class="st">1 tile</span></li><li><span class="n">13</span><a href="https://www.youtube.com/shorts/vcZX4u09Rkk" target="_blank" rel="noopener">My Avatar The Last Airbender watch design</a><span class="st">1 tile</span></li><li><span class="n">14</span><a href="https://www.youtube.com/shorts/bwUKBD1a0EM" target="_blank" rel="noopener">Vanishing Second Hand watch design</a><span class="st">1 tile</span></li><li><span class="n">15</span><a href="https://www.youtube.com/shorts/N6aShOjmPI8" target="_blank" rel="noopener">Bulbasaur watch design!</a><span class="st">1 tile</span></li><li><span class="n">16</span><a href="https://www.youtube.com/shorts/OeNkeAHXsMY" target="_blank" rel="noopener">Squirtle watch design!</a><span class="st">1 tile</span></li><li><span class="n">17</span><a href="https://www.youtube.com/shorts/BRCK9fLmbr8" target="_blank" rel="noopener">Charmander watch?</a><span class="st">1 tile</span></li><li><span class="n">18</span><a href="https://www.youtube.com/shorts/TfsjtkBcaH8" target="_blank" rel="noopener">Split hand watch designs ✌️</a><span class="st">3 tiles</span></li><li><span class="n">19</span><a href="https://www.youtube.com/shorts/GvGN6aMnQYA" target="_blank" rel="noopener">Double wrister watch designs</a><span class="st">4 tiles</span></li><li><span class="n">20</span><a href="https://www.youtube.com/shorts/T4vduIEMtEY" target="_blank" rel="noopener">Photoshop. But make it extreme 🤘</a><span class="st">Lab clip</span></li><li><span class="n">21</span><a href="https://www.youtube.com/shorts/xa_srFUIrxE" target="_blank" rel="noopener">Imperfect Watch Designs</a><span class="st">4 tiles</span></li><li><span class="n">22</span><a href="https://www.youtube.com/shorts/2pv8a4os7qI" target="_blank" rel="noopener">April fools werewolf design recap</a><span class="st">1 tile, with the teaser below</span></li><li><span class="n">23</span><a href="https://www.youtube.com/shorts/qTZYUXV-0OM" target="_blank" rel="noopener">Christopher Ward April Fools collab :)</a><span class="st">Teaser for C1 Full Moon</span></li><li><span class="n">24</span><a href="https://www.youtube.com/shorts/xvtC7ACXJo8" target="_blank" rel="noopener">Christopher Ward x Wraven Labs</a><span class="st">Announcement tile</span></li><li><span class="n">25</span><a href="https://www.youtube.com/shorts/680OLrDiEXw" target="_blank" rel="noopener">The “10:10 only” watch</a><span class="st">3 tiles</span></li><li><span class="n">26</span><a href="https://www.youtube.com/shorts/DLESXqfaMqY" target="_blank" rel="noopener">Possibly my greatest watch invention yet.</a><span class="st">1 tile</span></li><li><span class="n">27</span><a href="https://www.youtube.com/shorts/jFdJ4oJaaPE" target="_blank" rel="noopener">Traffic light colorways on my fake watch</a><span class="st">Colourways of Perpetual Traffic</span></li><li><span class="n">28</span><a href="https://www.youtube.com/shorts/lngJExXY9Tk" target="_blank" rel="noopener">Perpetual Traffic watch concept</a><span class="st">1 tile</span></li><li><span class="n">29</span><a href="https://www.youtube.com/shorts/oqJo-oMtsjY" target="_blank" rel="noopener">Disappearing watch dial ideas 🪄</a><span class="st">2 tiles</span></li><li><span class="n">30</span><a href="https://www.youtube.com/shorts/MGFw1oP9p5c" target="_blank" rel="noopener">Is the “full screen” jump hour possible?</a><span class="st">Build test for Full-Screen Jump Hour</span></li><li><span class="n">31</span><a href="https://www.youtube.com/shorts/EUG9sH6pmx0" target="_blank" rel="noopener">Is this the ultimate jump hour?</a><span class="st">1 tile</span></li><li><span class="n">32</span><a href="https://www.youtube.com/shorts/B9Pq8Rl0E6U" target="_blank" rel="noopener">Photoshopping a cow watch!</a><span class="st">Unavailable on YouTube</span></li><li><span class="n">33</span><a href="https://www.youtube.com/shorts/51VwJ6f3pM4" target="_blank" rel="noopener">4 jump hour watches I wish existed</a><span class="st">Unavailable on YouTube</span></li><li><span class="n">34</span><a href="https://www.youtube.com/shorts/Dn0aWKaOESI" target="_blank" rel="noopener">5 Fun Power Reserve Indicator Designs</a><span class="st">5 tiles</span></li><li><span class="n">35</span><a href="https://www.youtube.com/shorts/v8hQMY40zw0" target="_blank" rel="noopener">5 watch complications that I wish existed pt.2</a><span class="st">5 tiles</span></li><li><span class="n">36</span><a href="https://www.youtube.com/shorts/fxed3BAInXA" target="_blank" rel="noopener">5 Dumb Watch Complications I wish existed..</a><span class="st">5 tiles</span></li>
+  </ol>
+</section>
+<footer>
+  <p><b>About this catalog</b><br>Built from the public @wravenlabs YouTube channel. All watch concepts, names and designs belong to Wraven Labs and Nathan Clapp. Tile text is an original summary written for this catalog. Thumbnails link back to the source Shorts on YouTube.</p>
+</footer>
+<script>
+document.querySelectorAll('.chip').forEach(function(c){
+  c.addEventListener('click',function(){
+    document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('active')});
+    c.classList.add('active');
+    var tag=c.getAttribute('data-tag');
+    document.querySelectorAll('.tile').forEach(function(t){
+      t.classList.toggle('hidden', tag!=='All' && t.getAttribute('data-tag')!==tag);
+    });
+  });
+});
+</script>
+</body>
+</html>
